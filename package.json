@@ -1,0 +1,20 @@
+{
+  "name": "socketiochatstarter",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && npm run start:dev",
+    "server": "cd server && npm run node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shy2net/SocketIOChatStarter.git"
+  },
+  "author": "shynet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shy2net/SocketIOChatStarter/issues"
+  },
+  "homepage": "https://github.com/shy2net/SocketIOChatStarter#readme",
+}

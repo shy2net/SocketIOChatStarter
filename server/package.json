@@ -1,0 +1,37 @@
+{
+  "name": "socketiochatstarter",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:tsc": "cross-env NODE_OPTIONS=--max_old_space_size=8192 tsc --project tsconfig.json",
+    "build:nodelive": "./node_modules/.bin/nodemon --exec ./node_modules/.bin/ts-node -- ./src/index.ts -debug",
+    "build": "webpack --progress",
+    "node": "npm run build:nodelive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shy2net/SocketIOChatStarter.git"
+  },
+  "author": "shynet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shy2net/SocketIOChatStarter/issues"
+  },
+  "homepage": "https://github.com/shy2net/SocketIOChatStarter#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "rxjs": "^6.5.2",
+    "socket.io": "^2.2.0",
+    "socketio-jwt-auth": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.0",
+    "@types/node": "^12.0.8",
+    "@types/socket.io": "^2.1.2",
+    "@types/socketio-jwt-auth": "0.0.0",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.1"
+  }
+}
