@@ -10,26 +10,27 @@
 
 <body>
     <div class="container">
-        <div class="row">
+        <div class="row mt-2">
+            <div class="col-10">
+                <div class="chat-messages p-2 border">
+                    <!-- Chat messages goes into here-->
+                </div>
+            </div>
+
+            <div class="col-2">
+                <div class="chat-participants border">
+                    <!-- Chat participants goes into here -->
+                </div>
+            </div>
+
             <div class="col-12">
-                <div class="chat-container d-flex flex-row">
-
-                    <div class="chat-top-container">
-                        <div class="chat-participants">
-
-                        </div>
-
-                        <div class="chat-messages">
-
-                        </div>
-                    </div>
-
-                    <div class="chat-input-wrapper">
-                        <input type="text" class="chat-input" /><input type="button" value="Send message" />
-                    </div>
+                <div class="chat-input-wrapper d-flex flex-fill mt-1">
+                    <input id="submit_text" type="text" class="chat-input flex-fill" /><input id="submit_btn"
+                        type="button" value="Send message" />
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 </body>

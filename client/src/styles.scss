@@ -1,0 +1,16 @@
+.chat-messages {
+    height: 350px;
+
+    .chat-message {
+        .username {
+            font-weight: bold;
+        }
+
+        .message {}
+    }
+}
+
+.chat-participants {
+    height: 350px;
+    overflow: auto;
+}
