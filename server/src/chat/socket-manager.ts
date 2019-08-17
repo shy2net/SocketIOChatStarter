@@ -1,4 +1,5 @@
 import { SocketClient } from './socket-client';
+import { UserChatMessage } from '../../../shared/models/user-chat-message';
 
 /**
  * Describes all sockets related to a connected user.
@@ -52,6 +53,18 @@ export class SocketManager {
   onSocketDisconnect(socket: SocketClient) {
     this.removeSocket(socket);
     socket.onDisconnect.unsubscribe();
+  }
+
+  sendChatMessage(chatMessage: UserChatMessage) {
+    const connectedUser = this.connectedUsers[chatMessage.to];
+
+    if (connectedUser) {
+      connectedUser.sockets.forEach(socket => {
+        socket.sendMessage('chat_message', chatMessage);
+      });
+    } else {
+      // TODO: User is not connected, save data into database and send push notifications
+    }
   }
 }
 

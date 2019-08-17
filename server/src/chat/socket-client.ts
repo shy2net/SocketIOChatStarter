@@ -1,5 +1,8 @@
 import { Subject } from 'rxjs';
 import { Socket } from 'socket.io';
+import { SocketMessage } from '../../../shared/models/socket-message';
+import { UserChatMessage } from '../../../shared/models/user-chat-message';
+import SocketManager from './socket-manager';
 
 export class SocketClient {
   /**
@@ -10,7 +13,6 @@ export class SocketClient {
    */
   onDisconnect: Subject<SocketClient> = new Subject<SocketClient>();
 
-
   /**
    *The username obtained from the handshake process.
    *
@@ -18,7 +20,9 @@ export class SocketClient {
    * @type {string}
    * @memberof SocketClient
    */
-  get username(): string { return this.socket.handshake.query.username; }
+  get username(): string {
+    return this.socket.handshake.query.username;
+  }
 
   constructor(protected socket: Socket) {
     socket.emit('success');
@@ -49,7 +53,14 @@ export class SocketClient {
    * Called whenever a socket message was received.
    * @param message
    */
-  onSocketMessage(message: any) {
+  onSocketMessage(message: SocketMessage) {
     console.log(`User ${this.username}, sent the following message: ${JSON.stringify(message)}`);
+
+    switch (message.type) {
+      case 'chat_message':
+        const chatMsg = message as UserChatMessage;
+        SocketManager.sendChatMessage(chatMsg);
+        break;
+    }
   }
 }
