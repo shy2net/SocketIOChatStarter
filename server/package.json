@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:tsc": "cross-env NODE_OPTIONS=--max_old_space_size=8192 tsc --project tsconfig.json",
+    "build:tsc": "./node_modules/.bin/tsc --project tsconfig.json",
     "build:nodelive": "./node_modules/.bin/nodemon --exec ./node_modules/.bin/ts-node -- ./src/index.ts -debug",
     "build": "webpack --progress",
     "node": "npm run build:nodelive"
@@ -31,7 +31,9 @@
     "@types/node": "^12.0.8",
     "@types/socket.io": "^2.1.2",
     "@types/socketio-jwt-auth": "0.0.0",
+    "nodemon": "^1.19.1",
     "ts-node": "^8.3.0",
-    "typescript": "^3.5.1"
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.5.3"
   }
 }

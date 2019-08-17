@@ -6,7 +6,8 @@
   "scripts": {
     "client": "cd client && npm run start:dev",
     "server": "cd server && npm run node",
-    "build:server": "cd server && npm run build:tsc"
+    "build:server": "cd server && npm run build:tsc",
+    "postinstall": "cd server && npm install && cd ../client && npm install"
   },
   "repository": {
     "type": "git",

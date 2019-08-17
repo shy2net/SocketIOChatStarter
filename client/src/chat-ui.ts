@@ -1,5 +1,7 @@
+import { ChatMessenger } from './chat-messenger';
+
 export class ChatUI {
-  constructor() {}
+  constructor(protected messenger: ChatMessenger, protected host: string) {}
   username: string;
 
   init() {
@@ -10,6 +12,7 @@ export class ChatUI {
     });
 
     document.querySelector('#submit_btn').addEventListener('click', event => this.submitTextMessage());
+    this.addChatMessage('System', 'WELCOME! Please type in your username before we start');
   }
 
   submitTextMessage() {
@@ -29,9 +32,11 @@ export class ChatUI {
     }
   }
 
-  joinAsUser(username: string) {
+  async joinAsUser(username: string) {
     this.username = username;
-    this.addChatMessage('System', `Welcome ${this.username}`);
+    this.addChatMessage('System', `Welcome ${this.username}! Now connecting...`);
+    const socket = await this.messenger.connect(this.host, this.username);
+    this.addChatMessage('System', `You are now connected to our chat system!`);
   }
 
   addChatMessage(from: string, message: string) {
@@ -41,5 +46,3 @@ export class ChatUI {
     document.querySelector('.chat-messages').appendChild(chatMsg);
   }
 }
-
-export default new ChatUI();
