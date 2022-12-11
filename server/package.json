@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/shy2net/SocketIOChatStarter#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "rxjs": "^6.5.2",
     "socket.io": "^2.2.0",
     "socketio-jwt-auth": "^0.1.0"
